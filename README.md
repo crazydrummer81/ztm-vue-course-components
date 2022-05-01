@@ -6,6 +6,7 @@
 - https://cli.vuejs.org/
 - https://www.npmjs.com/package/@vue/babel-preset-app
 - https://vue-loader.vuejs.org/guide/scoped-css.html#scoped-css
+- https://cli.vuejs.org/guide/css.html
 
 
 ## Project setup
