@@ -1,5 +1,7 @@
 <template>
-	<p>{{ msg }}</p>
+	<p>{{ msg }}
+		<span>span</span>
+	</p>
 </template>
 <script>
 export default {
@@ -11,5 +13,12 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
+p {
+	color: red;
+}
+
+p /deep/ span {
+	color: green;
+}
 </style>

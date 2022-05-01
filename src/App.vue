@@ -1,4 +1,5 @@
 <template>
+	<p>QWE</p>
 	<greeting-message/>
 </template>
 
