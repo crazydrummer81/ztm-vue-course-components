@@ -1,5 +1,7 @@
 # ztm-vue-course-components
 
+Часть курса https://www.udemy.com/course/complete-vue-js-developer-zero-to-mastery-vuex, выделеная в отдельный проект. Уроки с 58 по ?.
+
 ## Project setup
 ```
 npm install
