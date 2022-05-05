@@ -6,7 +6,7 @@
 	</div>
 	<app-form>
 		<template v-slot:help>
-			<h2>Sign in</h2>
+			<h2>{{ help }}</h2>
 		</template>
 		<template v-slot:fields>
 			<input type="email" placeholder="Email" autocomplete="on">
@@ -16,6 +16,7 @@
 		<template vslot:buttons>
 			<button type="submit">Submit</button>
 		</template>
+		<p>Dummy text</p>
 	</app-form>
 
 	<app-form>
@@ -41,7 +42,8 @@ export default {
 	components: { GreetingMessage, UserCard, AppForm },
 	data() {
 		return {
-			age: 20
+			age: 20,
+			help: 'Sing in'
 		}
 	},
 	methods: {

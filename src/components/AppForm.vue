@@ -9,6 +9,7 @@
 		<div class="buttons">
 			<slot name="buttons"></slot>
 		</div>
+		<slot></slot>
 	</form>
 </template>
 
