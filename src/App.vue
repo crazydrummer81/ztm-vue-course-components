@@ -1,55 +1,43 @@
 <template>
-	<div v-if="0">
-		<h3>Hey!</h3>
-		<greeting-message :age="age"/>
-		<user-card :age="age" @age-change="onEmitChange"/>
-	</div>
-	<app-form>
-		<template v-slot:help>
-			<h2>{{ help }}</h2>
-		</template>
-		<template v-slot:fields>
-			<input type="email" placeholder="Email" autocomplete="on">
-			<input type="text" placeholder="User name" autocomplete="on">
-			<input type="password" placeholder="Password" autocomplete="on">
-		</template>
-		<template vslot:buttons>
-			<button type="submit">Submit</button>
-		</template>
-		<p>Dummy text</p>
-	</app-form>
+	<nav>
+		<ul>
+			<li
+				v-for="lesson in lessons"
+				:key="lesson.name"
+				@click="selectedLesson = lesson.name"
+			>{{ lesson.title || lesson.name }}</li>
+		</ul>
+	</nav>
 
-	<app-form>
-		<template v-slot:help>
-			<h2>Contact</h2>
-		</template>
-		<template v-slot:fields>
-			<input type="email" placeholder="Name" autocomplete="on">
-			<input type="text" placeholder="Message" autocomplete="off">
-		</template>
-		<template vslot:buttons>
-			<button type="submit">Submit</button>
-		</template>
-	</app-form>
+	<component :is="selectedLesson"></component>
+
 </template>
 
 <script>
-import GreetingMessage from '@/components/GreetingMessage'
-import UserCard from '@/components/UserCard'
-import AppForm from '@/components/AppForm'
+import LessonGreeting from '@/Lessons/LessonGreeting'
+import LessonSlots from '@/Lessons/LessonSlots'
+import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
 export default {
 	name: 'App',
-	components: { GreetingMessage, UserCard, AppForm },
+	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents },
 	data() {
 		return {
-			age: 20,
-			help: 'Sing in'
+			selectedLesson: 'lesson-greeting'
 		}
 	},
-	methods: {
-		onEmitChange(value) {
-			this.age += value
+	computed: {
+		lessons() {
+			return this.$options.components
 		}
-	}
+	},
 }
 </script>
+
+<style>
+	nav {
+		margin-bottom: 1rem;
+	}
+	nav ul {
+		cursor: pointer;
+	}
+</style>

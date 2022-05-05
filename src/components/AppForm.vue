@@ -15,10 +15,6 @@
 
 <script>
 export default {
-	name: 'app-form'
+	name: 'app-form',
 }
 </script>
-
-<style>
-
-</style>
