@@ -9,8 +9,11 @@
 		</ul>
 	</nav>
 
-	<component :is="selectedLesson"></component>
+	<keep-alive v-if="keepAlive">
+		<component :is="selectedLesson"></component>
+	</keep-alive>
 
+	<component :is="selectedLesson" v-if="!keepAlive"></component>
 </template>
 
 <script>
@@ -22,13 +25,20 @@ export default {
 	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents },
 	data() {
 		return {
-			selectedLesson: 'lesson-greeting'
+			selectedLesson: 'lesson-greeting',
+			keepAlive: true
+		}
+	},
+	methods: {
+		setKeepAlive(value) {
+			console.log(value)
+			this.keepAlive = value
 		}
 	},
 	computed: {
 		lessons() {
 			return this.$options.components
-		}
+		},
 	},
 }
 </script>
