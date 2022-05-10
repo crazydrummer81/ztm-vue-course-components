@@ -1,7 +1,7 @@
 <template>
 	<h3>Hey!</h3>
 	<greeting-message :age="age"/>
-	<user-card :age="age" @age-change="onEmitChange"/>
+	<user-card :age="age" @age-change="onEmitChange" :ageChangeFn="updateAgeCB"/>
 </template>
 
 <script>
@@ -16,8 +16,11 @@ export default {
 		}
 	},
 	methods: {
-		onEmitChange(value) {
-			this.age += value
+		onEmitChange(num) {
+			this.age += num
+		},
+		updateAgeCB(num) {
+			this.age += num
 		}
 	}
 }
