@@ -7,12 +7,14 @@
 <script>
 import GreetingMessage from '@/components/GreetingMessage'
 import UserCard from '@/components/UserCard'
+import AppForm from '@/components/AppForm'
 export default {
 	name: 'App',
-	components: { GreetingMessage, UserCard },
+	components: { GreetingMessage, UserCard, AppForm },
 	data() {
 		return {
-			age: 20
+			age: 20,
+			help: 'Sing in'
 		}
 	},
 	methods: {
