@@ -1,29 +1,55 @@
 <template>
-	<h3>Hey!</h3>
-	<greeting-message :age="age"/>
-	<user-card :age="age" @age-change="onEmitChange" :ageChangeFn="updateAgeCB"/>
+	<nav>
+		<ul>
+			<li
+				v-for="lesson in lessons"
+				:key="lesson.name"
+				@click="selectedLesson = lesson.name"
+			>{{ lesson.title || lesson.name }}</li>
+		</ul>
+	</nav>
+
+	<keep-alive>
+		<component :is="selectedLesson"></component>
+	</keep-alive>
 </template>
 
-<script>
-import GreetingMessage from '@/components/GreetingMessage'
-import UserCard from '@/components/UserCard'
-import AppForm from '@/components/AppForm'
+<script lang="javascript">
+import LessonGreeting from '@/Lessons/LessonGreeting'
+import LessonSlots from '@/Lessons/LessonSlots'
+import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
 export default {
 	name: 'App',
-	components: { GreetingMessage, UserCard, AppForm },
+	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents },
 	data() {
 		return {
-			age: 20,
-			help: 'Sing in'
+			selectedLesson: 'lesson-greeting',
+			keepAlive: false
 		}
 	},
 	methods: {
-		onEmitChange(num) {
-			this.age += num
+		setKeepAlive(value) {
+			console.log('setKeepAlive(value)', value)
+			this.keepAlive = value
 		},
-		updateAgeCB(num) {
-			this.age += num
+		onKeepAliveChanged(value) {
+			console.log('onKeepAliveChanged(value)', value)
+			this.setKeepAlive(value)
 		}
-	}
+	},
+	computed: {
+		lessons() {
+			return this.$options.components
+		},
+	},
 }
 </script>
+
+<style>
+	nav {
+		margin-bottom: 1rem;
+	}
+	nav ul {
+		cursor: pointer;
+	}
+</style>
