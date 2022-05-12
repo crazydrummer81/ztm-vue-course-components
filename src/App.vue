@@ -9,14 +9,12 @@
 		</ul>
 	</nav>
 
-	<keep-alive v-if="keepAlive">
+	<keep-alive>
 		<component :is="selectedLesson"></component>
 	</keep-alive>
-
-	<component :is="selectedLesson" v-if="!keepAlive"></component>
 </template>
 
-<script>
+<script lang="javascript">
 import LessonGreeting from '@/Lessons/LessonGreeting'
 import LessonSlots from '@/Lessons/LessonSlots'
 import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
@@ -26,13 +24,17 @@ export default {
 	data() {
 		return {
 			selectedLesson: 'lesson-greeting',
-			keepAlive: true
+			keepAlive: false
 		}
 	},
 	methods: {
 		setKeepAlive(value) {
-			console.log(value)
+			console.log('setKeepAlive(value)', value)
 			this.keepAlive = value
+		},
+		onKeepAliveChanged(value) {
+			console.log('onKeepAliveChanged(value)', value)
+			this.setKeepAlive(value)
 		}
 	},
 	computed: {
