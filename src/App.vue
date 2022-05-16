@@ -18,9 +18,10 @@
 import LessonGreeting from '@/Lessons/LessonGreeting'
 import LessonSlots from '@/Lessons/LessonSlots'
 import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
+import LessonAnimationWithCssTransitions from '@/Lessons/LessonAnimationWithCssTransitions'
 export default {
 	name: 'App',
-	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents },
+	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents, LessonAnimationWithCssTransitions },
 	data() {
 		return {
 			selectedLesson: 'lesson-greeting',
