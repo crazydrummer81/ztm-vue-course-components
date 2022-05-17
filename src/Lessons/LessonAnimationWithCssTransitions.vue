@@ -1,8 +1,11 @@
 <template>
 	<button @click="showMessage = !showMessage">Toggle</button>
-	<transition name="fade">
-		<div v-if="showMessage">
+	<transition name="fade" mode="out-in">
+		<div v-if="showMessage" key="main">
 			<h1>Message</h1>
+		</div>
+		<div v-else key="secondary">
+			<h1>Egassem</h1>
 		</div>
 	</transition>
 </template>
