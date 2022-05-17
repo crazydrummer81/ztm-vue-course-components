@@ -6,6 +6,8 @@ v-enter-active
 v-enter-to
 v-leave-to
 
+appear - инициализация анимации пир вхождении элемента в окно
+
 ## Project setup
 ```
 npm install
