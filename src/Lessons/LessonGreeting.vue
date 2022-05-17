@@ -22,6 +22,5 @@ export default {
 			this.age += value
 		}
 	}
-		
 }
 </script>

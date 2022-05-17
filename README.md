@@ -1,5 +1,11 @@
 # ztm-vue-course-animating-with-css-transitions
 
+## Animation with CSS transitions
+v-enter-from
+v-enter-active
+v-enter-to
+v-leave-to
+
 ## Project setup
 ```
 npm install
