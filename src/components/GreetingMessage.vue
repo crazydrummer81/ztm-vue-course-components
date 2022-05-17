@@ -21,7 +21,7 @@ p {
 	color: $color;
 }
 
-p /deep/ span {
+p span {
 	color: green;
 }
 </style>
