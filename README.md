@@ -1,14 +1,4 @@
-# ztm-vue-course-components
-
-Часть курса https://www.udemy.com/course/complete-vue-js-developer-zero-to-mastery-vuex, выделеная в отдельный проект. Уроки с 58 по ?.
-
-## Ресурсы
-- https://cli.vuejs.org/
-- https://www.npmjs.com/package/@vue/babel-preset-app
-- https://vue-loader.vuejs.org/guide/scoped-css.html#scoped-css
-- https://cli.vuejs.org/guide/css.html
-- https://vuejs.org/guide/components/slots.html
-
+# ztm-vue-course-animating-with-css-transitions
 
 ## Project setup
 ```
@@ -32,4 +22,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# ztm-vue-course-components
