@@ -1,5 +1,4 @@
 <template>
-	<h1>Slots</h1>
 	<app-form>
 		<template v-slot:help>
 			<h2>Sign in</h2>

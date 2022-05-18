@@ -1,6 +1,4 @@
 <template>
-	<h1>Dynamic Components</h1>
-	
 	<label for="select-keep-alive">Keep alive</label>
 
 	<textarea cols="30" rows="10" v-model="text" ref="text"></textarea>

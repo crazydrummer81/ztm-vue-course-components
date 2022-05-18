@@ -9,6 +9,7 @@
 		</ul>
 	</nav>
 
+	<h1 v-if="lessons">{{ lessonsByName[selectedLesson] }}</h1>
 	<keep-alive>
 		<component :is="selectedLesson"></component>
 	</keep-alive>
@@ -19,9 +20,16 @@ import LessonGreeting from '@/Lessons/LessonGreeting'
 import LessonSlots from '@/Lessons/LessonSlots'
 import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
 import LessonAnimationWithCssTransitions from '@/Lessons/LessonAnimationWithCssTransitions'
+import LessonAnimationWithJavaScript from '@/Lessons/LessonAnimationWithJavaScript'
 export default {
 	name: 'App',
-	components: {  LessonGreeting, LessonSlots, LessonDynamicComponents, LessonAnimationWithCssTransitions },
+	components: {
+		LessonGreeting,
+		LessonSlots,
+		LessonDynamicComponents,
+		LessonAnimationWithCssTransitions,
+		LessonAnimationWithJavaScript
+	},
 	data() {
 		return {
 			selectedLesson: 'lesson-greeting',
@@ -42,7 +50,15 @@ export default {
 		lessons() {
 			return this.$options.components
 		},
+		lessonsByName() {
+			let res = {}
+			Object.keys(this.$options.components).forEach(key => res[this.$options.components[key].name] = this.$options.components[key])
+			return res
+		},
 	},
+	mounted() {
+		console.debug(this.$options.components);
+	}
 }
 </script>
 

@@ -1,5 +1,4 @@
 <template>
-	<h1>Greeting</h1>
 	<greeting-message :age="age" />
 	<user-card :age="age" @age-change="onEmitChange" :ageChangeFn="onEmitChange"/>
 </template>
