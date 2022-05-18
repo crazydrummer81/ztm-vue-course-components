@@ -8,7 +8,7 @@
 			<h1>Egassem</h1>
 		</div>
 	</transition> -->
-	<transition name="zoom" type="transition" appear>
+	<transition name="zoom" type="animation" appear>
 		<h2 class="h2" v-if="showMessage">Hauihosdfsd</h2>
 	</transition>
 </template>
