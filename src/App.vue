@@ -4,15 +4,17 @@
 			<li
 				v-for="lesson in lessons"
 				:key="lesson.name"
-				@click="selectedLesson = lesson.name"
+				@click="selectedLessonName = lesson.name"
+				:class="{active: selectedLessonName === lesson.name}"
 			>{{ lesson.title || lesson.name }}</li>
 		</ul>
 	</nav>
 
-	<h1 v-if="lessons">{{ lessonsByName[selectedLesson] }}</h1>
+	<h1 v-if="lessons">{{ getLessonByName(selectedLessonName).title }}</h1>
 	<keep-alive>
-		<component :is="selectedLesson"></component>
+		<component :is="selectedLessonName"></component>
 	</keep-alive>
+
 </template>
 
 <script lang="javascript">
@@ -20,7 +22,7 @@ import LessonGreeting from '@/Lessons/LessonGreeting'
 import LessonSlots from '@/Lessons/LessonSlots'
 import LessonDynamicComponents from '@/Lessons/LessonDynamicComponents'
 import LessonAnimationWithCssTransitions from '@/Lessons/LessonAnimationWithCssTransitions'
-import LessonAnimationWithJavaScript from '@/Lessons/LessonAnimationWithJavaScript'
+import LessonAnimationWithJavascript from '@/Lessons/LessonAnimationWithJavascript'
 export default {
 	name: 'App',
 	components: {
@@ -28,11 +30,11 @@ export default {
 		LessonSlots,
 		LessonDynamicComponents,
 		LessonAnimationWithCssTransitions,
-		LessonAnimationWithJavaScript
+		LessonAnimationWithJavascript
 	},
 	data() {
 		return {
-			selectedLesson: 'lesson-greeting',
+			selectedLessonName: localStorage.selectedLessonName || 'lesson-greeting',
 			keepAlive: false
 		}
 	},
@@ -44,16 +46,19 @@ export default {
 		onKeepAliveChanged(value) {
 			console.log('onKeepAliveChanged(value)', value)
 			this.setKeepAlive(value)
+		},
+		getLessonByName(name) {
+			return Object.values(this.$options.components).find(lesson => lesson.name === name)
+		},
+	},
+	watch: {
+		selectedLessonName(lessonName) {
+			localStorage.selectedLessonName = lessonName;
 		}
 	},
 	computed: {
 		lessons() {
 			return this.$options.components
-		},
-		lessonsByName() {
-			let res = {}
-			Object.keys(this.$options.components).forEach(key => res[this.$options.components[key].name] = this.$options.components[key])
-			return res
 		},
 	},
 	mounted() {
@@ -68,5 +73,8 @@ export default {
 	}
 	nav ul {
 		cursor: pointer;
+	}
+	nav li.active {
+		border-bottom: 1px solid #000;
 	}
 </style>
